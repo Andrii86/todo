@@ -1,0 +1,50 @@
+$animation-time: 0.3s;
+$button-primary-background-color: rgba(6, 120, 2, 0.95);
+$button-secondary-background-color: #e02020;
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  line-height: 1.11;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 6px;
+  min-width: 165px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  background-color: $button-primary-background-color;
+  border: 1px solid $button-primary-background-color;
+  padding: 6px 15px;
+  color: #fff;
+  transition: transform $animation-time, box-shadow $animation-time, background-color $animation-time, color $animation-time;
+
+  &:hover,
+  &:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(#000, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(#000, 0.2);
+  }
+}
+
+.btn--secondary {
+  background-color: $button-secondary-background-color;
+  border: 1px solid $button-secondary-background-color;
+}
+
+.btn--full-width {
+  display: block;
+  width: 100px;
+}
+
+.btn--dasabled {
+  pointer-events: none;
+  opacity: 0.6;
+}

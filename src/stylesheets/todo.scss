@@ -1,0 +1,38 @@
+.todo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 760px;
+}
+
+.todo__form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo__list {
+  background-color: #e7e7e7;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.todo__list-title {
+  font-size: 2.5rem;
+}
+
+.todo__list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.todo__list-item-btn {
+  min-width: 90px;
+  margin-right: 10px;
+}
