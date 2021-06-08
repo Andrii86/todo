@@ -1,12 +1,10 @@
+import {store} from "./store/store";
+import {addTodo} from "./todo/actions";
+
 const todoFormInput = document.getElementById('todo-form-input');
 const todoFormBtnSubmit = document.getElementById('todo-form-btn-submit');
 
-const TODO_ITEMS = [
-  {title: 'Learn Homework'},
-  {title: 'Drink water'},
-  {title: 'Do yoga'},
-  {title: 'Sleep'},
-];
+window.store = store;
 
 const createTodoItemNode = (item) => {
   const itemNode = document.createElement('div');
@@ -35,7 +33,11 @@ const renderTodoList = () => {
 
   todoListRootNode.innerHTML = '';
 
-  TODO_ITEMS.forEach((item) => {
+  const state = store.getState();
+  const { todoReducer } = state;
+  const { items } = todoReducer;
+
+  items.forEach((item) => {
     const itemNode = createTodoItemNode(item);
 
     todoListRootNode.appendChild(itemNode);
@@ -45,8 +47,11 @@ const renderTodoList = () => {
 renderTodoList();
 
 const handleAddTodoItem = (title) => {
+  const item =
 
-  TODO_ITEMS.unshift({title});
+  store.dispatch(addTodo ({
+    title,
+  }));
 
   renderTodoList();
 }

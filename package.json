@@ -32,6 +32,7 @@
     "setup": "node ./config/site.setup.js",
     "postinstall": "node ./config/site.setup.js",
     "lint:js": "./node_modules/.bin/eslint \"src/**/*.js\"",
+    "lint:fix": "./node_modules/.bin/eslint --fix",
     "lint:styles": "stylelint \"src/**/*.scss\"",
     "build:dist": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.js",
     "deploy": "node ./config/site.deploy.js"
@@ -85,6 +86,7 @@
     "ftp-deploy": "^2.4.1",
     "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
+    "redux": "^4.1.0",
     "reset-css": "^5.0.1",
     "sanitize.css": "^12.0.0",
     "webpack-dev-server": "^3.11.2"

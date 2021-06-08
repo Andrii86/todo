@@ -1,6 +1,9 @@
 module.exports = {
     "extends": "airbnb-base",
-    "env": {
+  "rules": {
+      'import/prefer-default-export': 'off',
+  },
+  "env": {
       "browser": true,
       "node": true
     }
