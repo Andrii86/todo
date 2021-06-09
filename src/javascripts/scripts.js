@@ -44,18 +44,18 @@ const renderTodoList = () => {
   });
 };
 
-renderTodoList();
-
 const handleAddTodoItem = (title) => {
   store.dispatch(addTodo({
     title,
   }));
-
-  renderTodoList();
 };
+
+renderTodoList();
 
 todoFormBtnSubmit.addEventListener('click', () => {
   handleAddTodoItem(todoFormInput.value.trim());
 
   todoFormInput.value = '';
 });
+
+store.subscribe(renderTodoList);
