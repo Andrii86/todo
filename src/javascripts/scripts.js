@@ -1,25 +1,39 @@
 import { store } from './store/store';
-import { addTodo } from './todo/actions';
+import { addTodo, removeTodo } from './todo/actions';
+
+window.store = store;
 
 const todoFormInput = document.getElementById('todo-form-input');
 const todoFormBtnSubmit = document.getElementById('todo-form-btn-submit');
 
-window.store = store;
+const handleAddTodoItem = (title) => {
+  store.dispatch(addTodo({
+    id: Math.random(),
+    title,
+  }));
+};
+
+const handleRemoveTodoItem = (id) => {
+  store.dispatch(removeTodo(id));
+};
 
 const createTodoItemNode = (item) => {
   const itemNode = document.createElement('div');
   const buttonsNode = document.createElement('div');
-  const doneStatusButtoneNode = document.createElement('button');
-  const removeButtoneNode = document.createElement('button');
+  const doneStatusButtonNode = document.createElement('button');
+  const removeButtonNode = document.createElement('button');
 
-  doneStatusButtoneNode.classList.add('btn', 'todo__list-item-btn');
-  doneStatusButtoneNode.textContent = 'Done';
+  doneStatusButtonNode.classList.add('btn', 'todo__list-item-btn');
+  doneStatusButtonNode.textContent = 'Done';
 
-  removeButtoneNode.classList.add('btn', 'btn--secondary', 'todo__list-item-btn');
-  removeButtoneNode.textContent = 'Remove';
+  removeButtonNode.classList.add('btn', 'btn--secondary', 'todo__list-item-btn');
+  removeButtonNode.textContent = 'Remove';
+  removeButtonNode.addEventListener('click', () => {
+    handleRemoveTodoItem(item.id);
+  });
 
-  buttonsNode.appendChild(doneStatusButtoneNode);
-  buttonsNode.appendChild(removeButtoneNode);
+  buttonsNode.appendChild(doneStatusButtonNode);
+  buttonsNode.appendChild(removeButtonNode);
 
   itemNode.innerText = item.title;
   itemNode.classList.add('todo__list-item');
@@ -42,12 +56,6 @@ const renderTodoList = () => {
 
     todoListRootNode.appendChild(itemNode);
   });
-};
-
-const handleAddTodoItem = (title) => {
-  store.dispatch(addTodo({
-    title,
-  }));
 };
 
 renderTodoList();
