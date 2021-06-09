@@ -1,5 +1,5 @@
-import {store} from "./store/store";
-import {addTodo} from "./todo/actions";
+import { store } from './store/store';
+import { addTodo } from './todo/actions';
 
 const todoFormInput = document.getElementById('todo-form-input');
 const todoFormBtnSubmit = document.getElementById('todo-form-btn-submit');
@@ -23,7 +23,7 @@ const createTodoItemNode = (item) => {
 
   itemNode.innerText = item.title;
   itemNode.classList.add('todo__list-item');
-  itemNode.appendChild(buttonsNode)
+  itemNode.appendChild(buttonsNode);
 
   return itemNode;
 };
@@ -47,15 +47,15 @@ const renderTodoList = () => {
 renderTodoList();
 
 const handleAddTodoItem = (title) => {
-  const item =
-
-  store.dispatch(addTodo ({
+  store.dispatch(addTodo({
     title,
   }));
 
   renderTodoList();
-}
+};
 
 todoFormBtnSubmit.addEventListener('click', () => {
-  handleAddTodoItem(todoFormInput.value);
-})
+  handleAddTodoItem(todoFormInput.value.trim());
+
+  todoFormInput.value = '';
+});

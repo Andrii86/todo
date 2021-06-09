@@ -1,13 +1,13 @@
-import {ActionType} from "./constants";
+import { ActionType } from './constants';
 
 const initialState = {
   items: [
-    {title: 'Learn Homework'},
-    {title: 'Drink water'},
-    {title: 'Do yoga'},
-    {title: 'Sleep'},
-    {title: 'Walk around'}
-  ]
+    { title: 'Learn Homework' },
+    { title: 'Drink water' },
+    { title: 'Do yoga' },
+    { title: 'Sleep' },
+    { title: 'Walk around' },
+  ],
 };
 
 export const todoReducer = (state = initialState, action) => {
