@@ -32,7 +32,11 @@
   }
 }
 
+.todo__list-item-title--done {
+  text-decoration: line-through;
+}
+
 .todo__list-item-btn {
   min-width: 90px;
   margin-right: 10px;
-}
+  }
