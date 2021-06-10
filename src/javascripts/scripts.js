@@ -6,6 +6,14 @@ window.store = store;
 const todoFormInput = document.getElementById('todo-form-input');
 const todoFormBtnSubmit = document.getElementById('todo-form-btn-submit');
 
+const handleDisabledFormBtnSubmit = (isDisabled) => {
+  if (isDisabled) {
+    todoFormBtnSubmit.setAttribute('disabled', '');
+  } else {
+    todoFormBtnSubmit.removeAttribute('disabled');
+  }
+};
+
 const handleAddTodoItem = (title) => {
   store.dispatch(addTodo({
     id: Math.random(),
@@ -19,6 +27,13 @@ const handleRemoveTodoItem = (id) => {
 
 const handleUpdateTodoItem = (id, data) => {
   store.dispatch(updateTodo(id, data));
+};
+
+const handleChangeInput = (event) => {
+  const { value } = event.target;
+  const trimmerValue = value.trim();
+
+  handleDisabledFormBtnSubmit(!trimmerValue.length);
 };
 
 const createTodoItemNode = (item) => {
@@ -76,6 +91,9 @@ const renderTodoList = () => {
 };
 
 renderTodoList();
+handleDisabledFormBtnSubmit(true);
+
+todoFormInput.addEventListener('input', handleChangeInput);
 
 todoFormBtnSubmit.addEventListener('click', () => {
   handleAddTodoItem(todoFormInput.value.trim());

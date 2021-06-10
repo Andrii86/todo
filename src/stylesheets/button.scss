@@ -32,6 +32,11 @@ $button-secondary-background-color: #e02020;
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(#000, 0.2);
   }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
 }
 
 .btn--secondary {
@@ -42,9 +47,4 @@ $button-secondary-background-color: #e02020;
 .btn--full-width {
   display: block;
   width: 100px;
-}
-
-.btn--dasabled {
-  pointer-events: none;
-  opacity: 0.6;
 }
