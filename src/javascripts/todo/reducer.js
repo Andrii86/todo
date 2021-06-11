@@ -1,6 +1,7 @@
 import { ActionType } from './constants';
 
 const initialState = {
+  inputValue: null,
   items: [
     { id: Math.random(), title: 'Learn Homework', isDone: false },
     { id: Math.random(), title: 'Drink water', isDone: true },
@@ -48,6 +49,13 @@ export const todoReducer = (state = initialState, action) => {
       return {
         ...state,
         items: newItems,
+      };
+    }
+
+    case ActionType.SET_INPUT_VALUE: {
+      return {
+        ...state,
+        inputValue: payload.value,
       };
     }
 

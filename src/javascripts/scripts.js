@@ -1,5 +1,7 @@
 import { store } from './store/store';
-import { addTodo, removeTodo, updateTodo } from './todo/actions';
+import {
+  addTodo, removeTodo, setInputValue, updateTodo,
+} from './todo/actions';
 
 window.store = store;
 
@@ -29,11 +31,13 @@ const handleUpdateTodoItem = (id, data) => {
   store.dispatch(updateTodo(id, data));
 };
 
-const handleChangeInput = (event) => {
-  const { value } = event.target;
+const handleChangeInput = () => {
+  const { value } = todoFormInput;
   const trimmerValue = value.trim();
 
   handleDisabledFormBtnSubmit(!trimmerValue.length);
+
+  store.dispatch(setInputValue(trimmerValue));
 };
 
 const createTodoItemNode = (item) => {
@@ -79,11 +83,14 @@ const renderTodoList = () => {
 
   todoListRootNode.innerHTML = '';
 
-  const state = store.getState();
-  const { todoReducer } = state;
-  const { items } = todoReducer;
+  const { todoReducer } = store.getState();
+  const { inputValue, items } = todoReducer;
 
-  items.forEach((item) => {
+  const filteredItems = inputValue
+    ? items.filter((item) => item.title.toLowerCase().includes(inputValue.toLowerCase()))
+    : items;
+
+  filteredItems.forEach((item) => {
     const itemNode = createTodoItemNode(item);
 
     todoListRootNode.appendChild(itemNode);
@@ -99,6 +106,7 @@ todoFormBtnSubmit.addEventListener('click', () => {
   handleAddTodoItem(todoFormInput.value.trim());
 
   todoFormInput.value = '';
+  handleChangeInput();
 });
 
 store.subscribe(renderTodoList);

@@ -21,3 +21,10 @@ export const removeTodo = (id) => ({
     id,
   },
 });
+
+export const setInputValue = (value) => ({
+  type: ActionType.SET_INPUT_VALUE,
+  payload: {
+    value,
+  },
+});

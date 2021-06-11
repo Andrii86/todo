@@ -2,4 +2,5 @@ export const ActionType = {
   ADD_TODO: 'ADD_TODO',
   UPDATE_TODO: 'UPDATE_TODO',
   REMOVE_TODO: 'REMOVE_TODO',
+  SET_INPUT_VALUE: 'SET_INPUT_VALUE',
 };
